@@ -1,0 +1,13 @@
+langchain
+langchain-community
+langchain-openai
+crewai
+fastapi
+uvicorn
+python-dotenv
+pydantic
+pydantic-settings
+sqlalchemy
+pandas
+python-pptx
+requests

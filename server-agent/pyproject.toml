@@ -1,0 +1,22 @@
+[project]
+name = "server-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "langchain",
+    "langchain-community",
+    "langchain-openai",
+    "crewai",
+    "fastapi",
+    "uvicorn",
+    "python-dotenv",
+    "pydantic",
+    "pydantic-settings",
+    "sqlalchemy",
+    "pandas",
+    "python-pptx",
+    "requests",
+    "langchain-ollama>=1.0.1",
+]
