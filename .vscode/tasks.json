@@ -1,0 +1,72 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "server-agent:start",
+      "type": "shell",
+      "command": ".venv\\Scripts\\python.exe",
+      "args": ["-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"],
+      "options": {
+        "cwd": "${workspaceFolder}/server-agent"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "python",
+        "pattern": {
+          "regexp": "^.*$",
+          "file": 1,
+          "location": 2,
+          "message": 3
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Uvicorn running on",
+          "endsPattern": "Application startup complete"
+        }
+      },
+      "presentation": {
+        "group": "server-agent",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "client-electron:dev",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": {
+        "cwd": "${workspaceFolder}/client-electron"
+      },
+      "presentation": {
+        "group": "client-electron",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "ollama:serve",
+      "type": "shell",
+      "command": "ollama serve",
+      "isBackground": true,
+      "presentation": {
+        "group": "ollama",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "ollama:pull-model",
+      "type": "shell",
+      "command": "ollama pull llama3",
+      "presentation": {
+        "group": "ollama",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Start All (Local Dev)",
+      "dependsOn": ["server-agent:start", "client-electron:dev"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
